@@ -5,8 +5,6 @@ horizontal = 0
 depth = 0
 aim = 0
 
-aim = sum(list(map(lambda x: x * 1.6, array)))
-
 for i in array:
     if i[0] == "forward":
         horizontal = horizontal + int(i[1])
