@@ -1,4 +1,4 @@
-with open("input2.txt", mode="r") as input:
+with open("day-02\data\input.txt", mode="r") as input:
     array = list([row.strip().split() for row in input])
 # task1
 horizontal = 0

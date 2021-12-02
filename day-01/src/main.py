@@ -1,6 +1,6 @@
 from os import abort
 
-with open("input.txt", mode="r") as input:
+with open("day-01\data\input.txt", mode="r") as input:
     array = [row.strip() for row in input]
 
 # 1 task
