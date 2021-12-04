@@ -1,9 +1,7 @@
 with open("day-02\data\input.txt", mode="r") as input:
     array = list([row.strip().split() for row in input])
 
-horizontal = 0
-depth = 0
-aim = 0
+horizontal, depth, aim = 0, 0, 0
 
 for i in array:
     if i[0] == "forward":
