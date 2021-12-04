@@ -7,34 +7,31 @@ won_card = []
 won_num = []
 
 with open("day-04\data\input.txt", mode="r") as input:
-    for row in input:
-        row.replace("  ", " ")
-        if not bingoNum:
-            bingoNum = list(map(int, row.strip().split(sep=",")))
-            continue
-
-        if row.strip():
+    array = list([row.strip() for row in input])
+    bingoNum = list(map(int, array[0].split(sep=",")))
+    for row in array[2:]:
+        if row.replace("  ", " "):
             card.append(list(map(int, row.strip().split(sep=" "))))
         else:
-            if card:
-                arrayOfCard.append([x for x in card])
-                card = []
+            arrayOfCard.append([x for x in card])
+            card = []
 
 
 for i in bingoNum:
     for j in range(len(arrayOfCard)):
-        card = arrayOfCard[j]
-        if card in won_card:
+        if arrayOfCard[j] in won_card:
             continue
-        for row in card:
-            for col in row:
-                if i == col:
-                    row[row.index(col)] = "X"
+
+        arrayOfCard[j] = [
+            ["X" if row[z] == i else row[z] for z in range(len(row))]
+            for row in arrayOfCard[j]
+        ]
+
         if max(
             len(Counter(a).keys()) == 1 or len(Counter(b).keys()) == 1
-            for a, b in zip(card, zip(*card))
+            for a, b in zip(arrayOfCard[j], zip(*arrayOfCard[j]))
         ):
-            won_card.append(card)
+            won_card.append(arrayOfCard[j])
             won_num.append(i)
 
 print(
